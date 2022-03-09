@@ -12,5 +12,5 @@ def generate_initial_population():
   return population
 
 
-def generate_new_population_from_current(population):
+def select_individuals_for_the_next_generation(population):
   raise ValueError('Implementation missing.')
