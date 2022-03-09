@@ -1,5 +1,12 @@
 import random
 import numpy as np
+from enum import Enum
+
+
+class NaturalSelectionMethods(Enum):
+  ROULETTE = 1,
+  TOURNAMENT = 2,
+  UNIFORM = 3
 
 
 POPULATION_SIZE = 30
@@ -7,11 +14,11 @@ NUMBER_OF_GENERATIONS = 40
 NUMBER_OF_GENES = 9
 BITS_PER_GENE = 4
 INDIVIDUAL_LENGTH = NUMBER_OF_GENES * BITS_PER_GENE
+NATURAL_SELECTION_METHOD = NaturalSelectionMethods.TOURNAMENT
 
 
 def generate_initial_population():
-  array_shape = (POPULATION_SIZE, INDIVIDUAL_LENGTH)
-  population = np.empty(array_shape)
+  population = np.empty((POPULATION_SIZE, INDIVIDUAL_LENGTH))
 
   for i in range(0, POPULATION_SIZE):
     population[i] = generate_random_individual()
@@ -37,11 +44,41 @@ def calculate_individual_fitness(i):
     + i[25] * i[15] + i[30] * i[11] + i[24] * i[18] + i[ 6] * i[ 7] \
     + i[ 8] * i[17] + i[ 0] * i[32]
 
-def select_individuals_from_population(population):
+
+def select_individuals_with_roulette(population):
   raise ValueError('Implementation missing.')
+
+def select_individuals_with_tournament(population):
+  selected_individuals = np.empty((POPULATION_SIZE, INDIVIDUAL_LENGTH))
+
+  for i in range(0, POPULATION_SIZE, 2):
+    first_individual_index = random.randint(0, POPULATION_SIZE - 1)
+    second_individual_index = random.randint(0, POPULATION_SIZE - 1)
+
+    selected_individuals[i] = population[first_individual_index]
+    selected_individuals[i + 1] = population[second_individual_index]
+
+  return selected_individuals
+
+def select_individuals_with_uniform(population):
+  raise ValueError('Implementation missing.')
+
+def select_individuals_from_population(population):
+  if NATURAL_SELECTION_METHOD == NaturalSelectionMethods.ROULETTE:
+    return select_individuals_with_roulette(population)
+  
+  if NATURAL_SELECTION_METHOD == NaturalSelectionMethods.TOURNAMENT:
+    return select_individuals_with_tournament(population)
+  
+  if NATURAL_SELECTION_METHOD == NaturalSelectionMethods.UNIFORM:
+    return select_individuals_with_uniform(population)
+  
+  raise ValueError('No valid natural selection method have been setted.')
+
 
 def generate_children_between_individuals(individuals):
   raise ValueError('Implementation missing.')
+
 
 def generate_new_population_from_current(population):
   raise ValueError('Implementation missing.')
