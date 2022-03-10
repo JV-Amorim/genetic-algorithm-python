@@ -4,7 +4,7 @@ from config import BITS_PER_GENE, INDIVIDUAL_LENGTH, NUMBER_OF_GENES, POPULATION
 
 
 def reproduce_population_and_get_the_children(population):
-  children = np.empty((POPULATION_SIZE, INDIVIDUAL_LENGTH))
+  children = np.empty((POPULATION_SIZE, INDIVIDUAL_LENGTH), np.ubyte)
 
   for i in range(0, POPULATION_SIZE, 2):
     first_parent = population[i]

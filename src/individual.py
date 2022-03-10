@@ -4,7 +4,7 @@ from config import INDIVIDUAL_LENGTH
 
 
 def generate_random_individual():
-  individual = np.empty(INDIVIDUAL_LENGTH)
+  individual = np.empty(INDIVIDUAL_LENGTH, np.ubyte)
 
   for i in range(0, INDIVIDUAL_LENGTH):
     individual[i] = random.randint(0, 1)

@@ -23,7 +23,7 @@ def _select_individuals_with_roulette_method(population):
 
 
 def _select_individuals_with_tournament_method(population):
-  selected_individuals = np.empty((POPULATION_SIZE, INDIVIDUAL_LENGTH))
+  selected_individuals = np.empty((POPULATION_SIZE, INDIVIDUAL_LENGTH), np.ubyte)
 
   for i in range(0, POPULATION_SIZE, 2):
     first_individual = _select_single_individual_with_tournament_method(population)
