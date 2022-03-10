@@ -1,6 +1,7 @@
 import random
 import numpy as np
-from config import BITS_PER_GENE, INDIVIDUAL_LENGTH, NUMBER_OF_GENES, POPULATION_SIZE
+from config import BITS_PER_GENE, INDIVIDUAL_LENGTH, MUTATION_ENABLED, NUMBER_OF_GENES, POPULATION_SIZE
+from mutation import try_to_mutate_an_individual_child
 
 
 def reproduce_population_and_get_the_children(population):
@@ -12,8 +13,12 @@ def reproduce_population_and_get_the_children(population):
 
     two_children = _generate_two_children_using_crossover(first_parent, second_parent)
 
-    children[i] = two_children[0]
-    children[i + 1] = two_children[1]
+    if MUTATION_ENABLED:
+      children[i] = try_to_mutate_an_individual_child(two_children[0])
+      children[i + 1] = try_to_mutate_an_individual_child(two_children[1])
+    else:
+      children[i] = two_children[0]
+      children[i + 1] = two_children[1]
 
   return children
 
