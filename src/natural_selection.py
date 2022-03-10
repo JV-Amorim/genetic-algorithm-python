@@ -5,7 +5,7 @@ from natural_selection_methods import NaturalSelectionMethods
 from individual import calculate_individual_fitness
 
 
-def select_individuals_from_population(population):
+def select_individuals_to_reproduction(population):
   if NATURAL_SELECTION_METHOD == NaturalSelectionMethods.ROULETTE:
     return _select_individuals_with_roulette_method(population)
   
