@@ -1,4 +1,4 @@
-from natural_selection_methods import NaturalSelectionMethods
+from enums import NaturalSelectionMethods
 
 
 POPULATION_SIZE = 30

@@ -1,4 +1,3 @@
-import numpy as np
 from config import NUMBER_OF_GENERATIONS
 from natural_selection import select_individuals_to_reproduction
 from population import generate_initial_population, get_individuals_to_the_next_generation

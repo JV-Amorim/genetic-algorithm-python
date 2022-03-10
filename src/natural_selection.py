@@ -1,7 +1,7 @@
 import numpy as np
 import random
 from config import INDIVIDUAL_LENGTH, NATURAL_SELECTION_METHOD, POPULATION_SIZE
-from natural_selection_methods import NaturalSelectionMethods
+from enums import NaturalSelectionMethods
 from individual import calculate_individual_fitness
 
 
