@@ -35,11 +35,8 @@ def _select_individuals_with_tournament_method(population):
   return selected_individuals
 
 def _select_single_individual_with_tournament_method(population):
-  first_individual_index = random.randint(0, POPULATION_SIZE - 1)
-  second_individual_index = random.randint(0, POPULATION_SIZE - 1)
-
-  first_individual = population[first_individual_index]
-  second_individual = population[second_individual_index]
+  first_individual = _select_single_individual_with_uniform_method(population)
+  second_individual = _select_single_individual_with_uniform_method(population)
 
   first_individual_fitness = calculate_individual_fitness(first_individual)
   second_individual_fitness = calculate_individual_fitness(second_individual)
@@ -51,4 +48,14 @@ def _select_single_individual_with_tournament_method(population):
 
 
 def _select_individuals_with_uniform_method(population):
-  raise ValueError('Implementation missing.')
+  selected_individuals = generate_empty_population()
+
+  for i in range(0, POPULATION_SIZE):
+    selected_individuals[i] = _select_single_individual_with_uniform_method(population)
+
+  return selected_individuals
+
+def _select_single_individual_with_uniform_method(population):
+  individual_index = random.randint(0, POPULATION_SIZE - 1)
+  selected_individual = population[individual_index]
+  return selected_individual
