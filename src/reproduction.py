@@ -1,11 +1,12 @@
 import random
 import numpy as np
-from config import BITS_PER_GENE, INDIVIDUAL_LENGTH, MUTATION_ENABLED, NUMBER_OF_GENES, POPULATION_SIZE
+from config import BITS_PER_GENE, MUTATION_ENABLED, NUMBER_OF_GENES, POPULATION_SIZE
 from mutation import try_to_mutate_an_individual_child
+from population import generate_empty_population
 
 
 def reproduce_population_and_get_the_children(population):
-  children = np.empty((POPULATION_SIZE, INDIVIDUAL_LENGTH), np.ubyte)
+  children = generate_empty_population()
 
   for i in range(0, POPULATION_SIZE, 2):
     first_parent = population[i]

@@ -1,7 +1,10 @@
 from config import NUMBER_OF_GENERATIONS
 from individual import calculate_individual_fitness
 from natural_selection import select_individuals_to_reproduction
-from population import find_best_individual_in_current_population, generate_initial_population, get_individuals_to_the_next_generation
+from population import \
+  find_best_individual_in_current_population, \
+  generate_initial_population, \
+  get_individuals_to_the_next_generation
 from reproduction import reproduce_population_and_get_the_children
 
 

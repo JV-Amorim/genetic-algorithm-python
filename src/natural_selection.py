@@ -1,8 +1,8 @@
-import numpy as np
 import random
-from config import INDIVIDUAL_LENGTH, NATURAL_SELECTION_METHOD, POPULATION_SIZE
+from config import NATURAL_SELECTION_METHOD, POPULATION_SIZE
 from enums import NaturalSelectionMethods
 from individual import calculate_individual_fitness
+from population import generate_empty_population
 
 
 def select_individuals_to_reproduction(population):
@@ -23,7 +23,7 @@ def _select_individuals_with_roulette_method(population):
 
 
 def _select_individuals_with_tournament_method(population):
-  selected_individuals = np.empty((POPULATION_SIZE, INDIVIDUAL_LENGTH), np.ubyte)
+  selected_individuals = generate_empty_population()
 
   for i in range(0, POPULATION_SIZE, 2):
     first_individual = _select_single_individual_with_tournament_method(population)

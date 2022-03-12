@@ -4,12 +4,15 @@ from individual import calculate_individual_fitness, generate_random_individual
 
 
 def generate_initial_population():
-  population = np.empty((POPULATION_SIZE, INDIVIDUAL_LENGTH), np.ubyte)
+  population = generate_empty_population()
 
   for i in range(0, POPULATION_SIZE):
     population[i] = generate_random_individual()
 
   return population
+
+def generate_empty_population():
+  return np.empty((POPULATION_SIZE, INDIVIDUAL_LENGTH), np.ubyte)
 
 
 # The following function uses the elitism method.
