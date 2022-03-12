@@ -11,8 +11,18 @@ def generate_initial_population():
 
   return population
 
+
 def generate_empty_population():
   return np.empty((POPULATION_SIZE, INDIVIDUAL_LENGTH), np.ubyte)
+
+
+def calculate_population_total_fitness(population):
+  total_fitness = 0
+
+  for i in range(0, POPULATION_SIZE):
+    total_fitness += calculate_individual_fitness(population[i])
+
+  return total_fitness
 
 
 # The following function uses the elitism method.

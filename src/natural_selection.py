@@ -1,8 +1,9 @@
+import numpy as np
 import random
 from config import NATURAL_SELECTION_METHOD, POPULATION_SIZE
 from enums import NaturalSelectionMethods
 from individual import calculate_individual_fitness
-from population import generate_empty_population
+from population import calculate_population_total_fitness, generate_empty_population
 
 
 def select_individuals_to_reproduction(population):
@@ -19,7 +20,36 @@ def select_individuals_to_reproduction(population):
 
 
 def _select_individuals_with_roulette_method(population):
-  raise ValueError('Implementation missing.')
+  selected_individuals = generate_empty_population()
+  roulette_slices = _calculate_a_roulette_slice_for_each_individual(population)
+
+  for i in range(0, POPULATION_SIZE):
+    selected_individuals[i] = _select_single_individual_with_roulette_method(population, roulette_slices)
+
+  return selected_individuals
+
+def _calculate_a_roulette_slice_for_each_individual(population):
+  roulette_slices = np.empty(POPULATION_SIZE)
+
+  population_fitness = calculate_population_total_fitness(population)
+  last_roulette_slice_value = 0
+
+  for i in range(0, POPULATION_SIZE):
+    current_individual_fitness = calculate_individual_fitness(population[i])
+    current_individual_probability = current_individual_fitness / population_fitness
+    roulette_slices[i] = last_roulette_slice_value + current_individual_probability
+    last_roulette_slice_value = roulette_slices[i]
+
+  return roulette_slices
+
+def _select_single_individual_with_roulette_method(population, roulette_slices):
+  roulette_value = random.random()
+  
+  for i in range(0, POPULATION_SIZE):
+    current_slice_value = roulette_slices[i]
+    
+    if roulette_value < current_slice_value:
+      return population[i]
 
 
 def _select_individuals_with_tournament_method(population):
