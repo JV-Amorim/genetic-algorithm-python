@@ -1,6 +1,13 @@
 from enums import NaturalSelectionMethods
 
 
+# GENERAL CONFIGS:
+
+NUMBER_OF_EXECUTIONS_PER_RUN = 10
+
+
+# GENETIC ALGORITHM CONFIGS:
+
 POPULATION_SIZE = 30
 NUMBER_OF_GENERATIONS = 40
 NUMBER_OF_GENES = 9
@@ -9,3 +16,4 @@ INDIVIDUAL_LENGTH = NUMBER_OF_GENES * BITS_PER_GENE
 NATURAL_SELECTION_METHOD = NaturalSelectionMethods.TOURNAMENT
 MUTATION_RATE = 0.03
 MUTATION_ENABLED = True
+BEST_POSSIBLE_FITNESS = 27    # This variable is only used in a verification. Changing it won't affect the fitness calculation.
