@@ -46,7 +46,7 @@ def display_boxplot_with_the_results(best_fitnesses, best_possible_fitness_count
   plot.set_xlabel(f'Boxplot of the best fitnesses in {NUMBER_OF_EXECUTIONS_PER_RUN} execution(s).')
   plot.set_ylabel('Fitness')
 
-  plt.show()
+  plt.savefig('output/last-result-plot.png')
 
 
 if __name__ == '__main__':

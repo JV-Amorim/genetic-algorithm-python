@@ -1,6 +1,6 @@
 # Genetic Algorithm
 
-- Run `python src/main.py` or `py src/main.py` to execute the algorithm.
+- Run `python src/main.py` or `py src/main.py` to execute the algorithm. The result plot will be save in `output/last-plot.png`.
 
 - Read the following document for the problem description: 
 [Computação Natural - Primeiro Trabalho Prático - Descrição do Problema](./docs/descricao-do-problema.pdf).
